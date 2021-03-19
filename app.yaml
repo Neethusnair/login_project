@@ -16,7 +16,7 @@ spec:
     spec:     # pod spec                  
       containers: 
       - name: login
-        image: login-docker:latest # image we pushed
+        image: gcr.io/PROJECT_ID/IMAGE:TAG # image we pushed
         imagePullPolicy: Never
         ports:
         - containerPort: 3000
