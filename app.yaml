@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: login-deployment
+  labels:
+    app: login
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: login
+  template:
+    metadata:
+      labels: # labels to select/identify the deployment
+        app: login  
+    spec:     # pod spec                  
+      containers: 
+      - name: login
+        image: login-docker:latest # image we pushed
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MONGO_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-username
+        - name: MONGO_PASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-password
+        - name: MONGO_HOSTNAME
+          valueFrom: 
+            configMapKeyRef:
+              name: app-configmap
+              key: database_hostname
+        - name: MONGO_PORT
+          valueFrom: 
+            configMapKeyRef:
+              name: app-configmap
+              key: database_port
+        - name: MONGO_DB
+          valueFrom: 
+            configMapKeyRef:
+              name: app-configmap
+              key: database_db
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: login-service
+spec:
+  selector:
+    app: login
+  type: LoadBalancer  
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30000
+
+
+
+
+
