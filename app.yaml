@@ -16,7 +16,7 @@ spec:
     spec:     # pod spec                  
       containers: 
       - name: login
-        image: gcr.io/PROJECT_ID/IMAGE:TAG # image we pushed
+        image: gcr.io/PROJECT_ID/IMAGE:TAG # image we pushed  
         ports:
         - containerPort: 3000
         env:
@@ -45,6 +45,8 @@ spec:
             configMapKeyRef:
               name: app-configmap
               key: database_db
+        imagePullSecrets:
+        - name: my-secret      
 ---
 apiVersion: v1
 kind: Service
