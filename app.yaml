@@ -14,8 +14,6 @@ spec:
       labels: # labels to select/identify the deployment
         app: login  
     spec:     # pod spec
-      imagePullSecrets:
-        - name: my-secret
       containers: 
       - name: login
         image: gcr.io/PROJECT_ID/IMAGE:TAG # image we pushed  
