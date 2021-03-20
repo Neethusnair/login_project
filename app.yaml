@@ -13,7 +13,9 @@ spec:
     metadata:
       labels: # labels to select/identify the deployment
         app: login  
-    spec:     # pod spec                  
+    spec:     # pod spec
+      imagePullSecrets:
+        - name: my-secret
       containers: 
       - name: login
         image: gcr.io/PROJECT_ID/IMAGE:TAG # image we pushed  
@@ -45,8 +47,7 @@ spec:
             configMapKeyRef:
               name: app-configmap
               key: database_db
-        imagePullSecrets:
-        - name: my-secret      
+      
 ---
 apiVersion: v1
 kind: Service
