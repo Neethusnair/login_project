@@ -16,7 +16,7 @@ spec:
     spec:     # pod spec
       containers: 
       - name: login
-        image: gcr.io/PROJECT_ID/IMAGE:TAG # image we pushed  
+        image: neethusnair/login-docker:latest # image we pushed  
         ports:
         - containerPort: 3000
         env:
