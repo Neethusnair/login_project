@@ -60,4 +60,4 @@ jobs:
          #kubectl create secret docker-registry my-secret --docker-server=gcr.io --docker-username=DOCKER_USER --docker-password=DOCKER_PASSWORD --docker-email=DOCKER_EMAIL
         ./kustomize build . | kubectl apply -f -
         #kubectl rollout status deployment/$DEPLOYMENT_NAME
-        kubectl get services -o
+        kubectl get services -o wide
