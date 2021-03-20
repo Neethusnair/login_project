@@ -9,7 +9,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: new-gke
   GKE_ZONE: us-central1-a
-  DEPLOYMENT_NAME: app-test
+  #DEPLOYMENT_NAME: app-test
   IMAGE: login-docker
 
 jobs:
@@ -59,5 +59,5 @@ jobs:
         ./kustomize edit set image gcr.io/PROJECT_ID/IMAGE:TAG=gcr.io/$PROJECT_ID/$IMAGE:$GITHUB_SHA
          kubectl create secret docker-registry my-secret --docker-server=gcr.io --docker-username=DOCKER_USER --docker-password=DOCKER_PASSWORD --docker-email=DOCKER_EMAIL
         ./kustomize build . | kubectl apply -f -
-        kubectl rollout status deployment/$DEPLOYMENT_NAME
+        #kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wideghhghbj
