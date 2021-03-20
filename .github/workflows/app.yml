@@ -9,7 +9,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: new-gke
   GKE_ZONE: us-central1-a
-  DEPLOYMENT_NAME: app-test
+  #DEPLOYMENT_NAME: app-test
 
 jobs:
   setup-build-publish-deploy:
@@ -45,5 +45,5 @@ jobs:
     - name: Deploy
       run: |-
         ./kustomize build . | kubectl apply -f -
-        kubectl rollout status deployment/$DEPLOYMENT_NAME
+        #kubectl rollout status deployment/$DEPLOYMENT_NAME
         kubectl get services -o wide
