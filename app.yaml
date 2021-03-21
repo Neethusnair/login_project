@@ -14,11 +14,15 @@ spec:
       labels: # labels to select/identify the deployment
         app: login  
     spec:     # pod spec
-      imagePullSecrets:
-      - name: gcr-access-token 
+      #imagePullSecrets:
+      #- name: gcr-access-token 
       containers: 
       - name: login
-        image: gcr.io/PROJECT_ID/IMAGE:TAG # image we pushed  
+        #image: gcr.io/PROJECT_ID/IMAGE:TAG # image we pushed 
+        image: neethusnair/login-docker:latest
+        credentials:
+        -username: neethusnair
+        -password: ${{ secrets.DOCKER_HUB_PASSWORD}}
         ports:
         - containerPort: 3000
         env:
