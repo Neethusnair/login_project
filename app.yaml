@@ -20,9 +20,6 @@ spec:
       - name: login
         #image: gcr.io/PROJECT_ID/IMAGE:TAG # image we pushed 
         image: neethusnair/login-docker:latest
-        credentials:
-           username: neethusnair
-           password: ${{ secrets.DOCKER_HUB_PASSWORD}}
         #credentials:
         #- username: neethusnair
         #- password: ${{ secrets.DOCKER_HUB_PASSWORD}}
