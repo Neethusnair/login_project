@@ -3,5 +3,5 @@ kind: Kustomization
 resources:
 - mongo-secret.yaml
 - mongo.yaml
-- app-config.yaml 
-- app.yaml
+#- app-config.yaml 
+#- app.yaml
