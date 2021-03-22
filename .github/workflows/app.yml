@@ -71,5 +71,3 @@ jobs:
         kubectl apply -f app.yaml
         kubectl get services -o wide
         
-        
-        
