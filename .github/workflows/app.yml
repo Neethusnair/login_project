@@ -71,5 +71,7 @@ jobs:
       run: |-
         kubectl apply -f app-config.yaml 
         kubectl apply -f app.yaml
+        kubectl wait --for=condition=ready pod -l app=login
+        kubectl rollout status deployment mongodb-deployment
         kubectl get services -o wide
         
